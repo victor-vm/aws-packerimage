@@ -23,16 +23,16 @@ source "amazon-ebs" "amazon-linux" {
 //   name    = "my-first-build"
 //   sources = ["source.amazon-ebs.amazon-linux"]
 
-  // provisioner "shell" {
-  //   inline = [
-  //     "sudo apt update",
-  //     "sudo apt install nginx -y",
-  //     "sudo systemctl enable nginx",
-  //     "sudo systemctl start nginx",
-  //     "sudo ufw allow proto tcp from any to any port 22,80,443",
-  //     "echo 'y' | sudo ufw enable"
-  //   ]
-  // }
+// provisioner "shell" {
+//   inline = [
+//     "sudo apt update",
+//     "sudo apt install nginx -y",
+//     "sudo systemctl enable nginx",
+//     "sudo systemctl start nginx",
+//     "sudo ufw allow proto tcp from any to any port 22,80,443",
+//     "echo 'y' | sudo ufw enable"
+//   ]
+// }
 
 build {
   name = "hq-packer"
@@ -41,22 +41,22 @@ build {
   ]
 
   provisioner "file" {
-  source = "provisioner.sh"
-  destination = "/tmp/provisioner.sh"
-}
+    source      = "provisioner.sh"
+    destination = "/tmp/provisioner.sh"
+  }
 
   provisioner "shell" {
     inline = ["chmod a+x /tmp/provisioner.sh"]
   }
-  
+
   provisioner "shell" {
-    inline = [ "ls -la /tmp"]
+    inline = ["ls -la /tmp"]
   }
-  
-    provisioner "shell" {
-    inline = [ "pwd"]
+
+  provisioner "shell" {
+    inline = ["pwd"]
   }
-  
+
   provisioner "shell" {
     inline = ["/tmp/provisioner.sh"]
   }

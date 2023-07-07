@@ -22,10 +22,10 @@ pipeline {
             }
         }
 
-        stage('Push the artifacts'){
+        stage('AMI Build'){
            steps{
                 script{
-				sh 'echo "hello world 1"'
+				sh 'packer build aws-linux.pkr.hcl'
                 }
             }
         }
