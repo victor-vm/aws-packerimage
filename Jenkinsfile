@@ -22,7 +22,7 @@ pipeline {
             }
         }
 
-        stage('AMI Build'){
+        stage('Golden AMI'){
            steps{
 		withAWS(credentials: 'sam-jenkins-demo-credentials', region: 'us-east-1'){
 				sh 'packer build aws-linux.pkr.hcl'
