@@ -10,7 +10,7 @@ packer {
 source "amazon-ebs" "amazon-linux" {
 
 
-  ami_name      = "my-first-packer-image"
+  ami_name      = "latest-packer-image"
   instance_type = "t2.micro"
   region        = "us-east-1"
   source_ami    = "ami-04823729c75214919"
